@@ -403,11 +403,19 @@
 						<h2>Contact</h2>
 					</div>
 					<div class="col-12 col-md-8 col-lg-8">
-						<form id="contact" class="form">
+						<form id="contact" class="form" onsubmit="sendEmail () ; reset();return false">
 							<h3>Let's Chat</h3>
 							<div class="textarea">
 								<label for="name">Name</label>
 								<input type="text" class="form-control" id="name" name="name" required />
+							</div>
+							<div class="textarea">
+								<label for="Email">Email</label>
+								<input type="text" class="form-control" id="email" name="Email" required />
+							</div>
+							<div class="textarea">
+								<label for="Number">Phone Number</label>
+								<input type="Number" class="form-control" id="number" name="Number" required />
 							</div>
 							<div class="textarea">
 								<label for="messege">Message</label>
@@ -644,14 +652,27 @@
 		</div>
 		<!-- seo text end -->
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-		<script src="js/wow.min.js"></script>
+		<!-- <script src="js/wow.min.js"></script> -->
 		<script src="js/siema.min.js"></script>
 		<script src="js/typed.min.js"></script>
 		<script src="js/codersrank-activity.min.js"></script>
 		<script src="js/script.js"></script>
 		<script src="https://smtpjs.com/v3/smtp.js"></script>
 		<script>
+function sendEmail (){
+	Email.send({
+		Host : "smtp.gmail.com",
+    Username : "",
+    Password : "",
+    To : 'abdalhamed9698@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "This is the subject",
+    Body :"name :" +document.getElementById("name").value +"<br> email :" + document.getElementById("email").value+"<br> Number :" + document.getElementById("number").value
+}).then(
+  message => alert("Message sent successfully")
+);
 
+}
 
 		</script>
 	</body>
